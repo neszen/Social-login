@@ -1,0 +1,128 @@
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>success </title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px; /* Increased width */
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .bg-white {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .btn-google, .btn-submit {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .btn-google img {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .btn-google {
+            background-color: #3974c0;
+        }
+
+        .btn-google.github {
+            background-color: #942020;
+        }
+
+        .btn-submit {
+            background-color: #007BFF;
+        }
+
+        .form-control {
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .divider {
+            margin: 20px 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .divider::before, .divider::after {
+            content: "";
+            height: 1px;
+            background-color: #ddd;
+            position: absolute;
+            width: 40%;
+            top: 50%;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .divider.text-muted {
+            font-size: 14px;
+            color: #666;
+            margin: 0 15px;
+            line-height: 1.5;
+        }
+
+        .text-dark {
+            color: #333;
+        }
+
+        .alert {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Form Section -->
+    <div class="container">
+        <div class="row align-items-center justify-content-center" style="height: 100vh">
+            <div class="col-lg-3"></div>
+
+            <div class="col-lg-6"> <!-- Increased width for form -->
+                <div class="bg-white p-4 rounded-3 shadow text-center">
+                    <h2 class="text-dark">Logged in Successfully!</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
