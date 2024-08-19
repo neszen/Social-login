@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decor Products</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet" />
+</head>
+<body style="font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: #f8f9fa;">
+<!-- Pricing Section -->
+<section style="padding: 3rem 1.5rem;">
+    <div style="max-width: 1200px; margin: 0 auto;" id="pricing">
+      <h2 style="font-size: 2.5rem; font-weight: 600; text-align: center;">Pricing</h2>
+      <p style="font-size: 1.25rem; text-align: center; margin-bottom: 3rem;">
+        Choose the plan that best suits your needs.
+      </p>
+      <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+        
+        <div style="width: 100%; max-width: 350px; margin-bottom: 2rem; box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);">
+          <div style="position: relative; background-color: white; padding: 2rem; border-radius: 0.5rem;">
+            <span style="position: absolute; top: 1rem; right: 1rem; background-color: #ffc107; color: white; padding: 0.25rem 0.5rem; font-size: 0.875rem; border-radius: 0.25rem;">Most Popular</span>
+            <div style="text-align: center;">
+              <h3 style="font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem;">Standard</h3>
+              <h2 style="font-size: 2rem; margin-bottom: 1rem;">
+                <span style="text-decoration: line-through; color: #6c757d;">$10</span>
+                <span style="color: #28a745;">$8.99</span>
+                <span style="font-size: 1rem; color: #6c757d;">/ month</span>
+              </h2>
+              <p style="margin-bottom: 0.5rem;">60,000 Total Characters</p>
+              <p style="margin-bottom: 0.5rem;">2500 Characters per request</p>
+              <p style="margin-bottom: 1rem;">6 Advance Voices</p>
+              <form id="subscription-form-2" action="{% url 'create_checkout_session' %}" method="POST">
+                {% csrf_token %}
+                {% if user.is_authenticated %}
+                <button style="background-color: #007bff; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 0.25rem; font-size: 1rem; cursor: pointer;" onclick="submitForm2()">Subscribe</button>
+                {% else %}
+                <a href="{% url 'login' %}" style="background-color: #007bff; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 0.25rem; font-size: 1rem; text-decoration: none; display: inline-block;">Login to Subscribe</a>
+                {% endif %}
+                <input type="hidden" name="productId" value="price_1Pp9KoSEuydTd85jdg0kNWIq">
+              </form>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -63,13 +63,12 @@
         }
       </style>
   
-      <div class="success-container">
-        <i class="fas fa-check-circle success-icon"></i>
-        <div class="success-text">Success!</div>
-        <p>Thanks for Shopping with us.</p>
-        <a href="{% url 'products' %}" class="btn btn-custom">Continue Shopping </a>
-        
-       </div>
+  <div class="error-container">
+    <i class="fas fa-exclamation-triangle error-icon"></i>
+    <div class="error-text">Error</div>
+    <p>{{error}}</p>
+    <a href="/" class="btn btn-custom">Back to Home</a>
+  </div>
   
   
 </body>

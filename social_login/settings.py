@@ -106,7 +106,7 @@ SOCIALACCOUNT_PROVIDERS = {
 
 SOCIALACCOUNT_LOGIN_ON_GET=True
 LOGIN_REDIRECT_URL = 'success'
-
+SOCIALACCOUNT_AUTO_SIGNUP = True
 WSGI_APPLICATION = "social_login.wsgi.application"
 
 
@@ -150,8 +150,9 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
-
-
+WEBHOOK_ENDPOINT_SECRET = ''
+STRIPE_API_KEY = ''
+DOMAIN = 'http://localhost:8000'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
