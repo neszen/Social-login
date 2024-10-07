@@ -18,12 +18,9 @@ def verify_2fa_otp(user , otp ):
         user.save()
         return True
     return False
-
-
 @login_required
 def home_view(request):
     return render(request, 'home.html')
-
 
 @login_required
 def profile_view(request):
@@ -45,8 +42,29 @@ def profile_view(request):
         buffer.seek(0)  
         qr_code = base64.b64encode(buffer.getvalue()).decode("utf-8")
 
+        # Ensure to prefix the base64 string with the appropriate data URL scheme
         qr_code_data_uri = f"data:image/png;base64,{qr_code}"
         return render(request, 'profile.html', {"qrcode": qr_code_data_uri})
+
+
+def login_page(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        
+        user = authenticate(request, username=email, password=password)
+        
+        if user is not None:
+            if user.mfa_enabled:
+                return render(request,'otp_verify.html', {'user_id': user.id})
+            login(request, user)
+            messages.success(request, 'Login successful!')
+            return redirect('profile') 
+        else:
+            messages.error(request, 'Invalid email or password. Please try again.')
+    return render(request,'login.html')
+
+
 
 def verify_mfa(request):
     if request.method == 'POST':
@@ -85,25 +103,6 @@ def disable_2fa(request):
     else:
         messages.info(request, "2FA is already disabled.")
     return redirect('profile')
-
-def login_page(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        
-        user = authenticate(request, username=email, password=password)
-        
-        if user is not None:
-            if user.mfa_enabled:
-                return render(request,'otp_verify.html', {'user_id': user.id})
-            login(request, user)
-            messages.success(request, 'Login successful!')
-            return redirect('profile') 
-        else:
-            messages.error(request, 'Invalid email or password. Please try again.')
-    return render(request,'login.html')
-
-
 
 
 @login_required

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'user',
+    'payments',
+    'shop',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -47,8 +50,9 @@ INSTALLED_APPS = [
 ]
 AUTHENTICATION_BACKENDS = [
     
-    'allauth.account.auth_backends.AuthenticationBackend',  # Allauth backend
+    'allauth.account.auth_backends.AuthenticationBackend', 
 ]
+AUTH_USER_MODEL =  "user.CustomUser"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -106,6 +110,7 @@ SOCIALACCOUNT_PROVIDERS = {
 
 SOCIALACCOUNT_LOGIN_ON_GET=True
 LOGIN_REDIRECT_URL = 'success'
+LOGIN_URL = 'login'
 SOCIALACCOUNT_AUTO_SIGNUP = True
 WSGI_APPLICATION = "social_login.wsgi.application"
 
@@ -162,3 +167,11 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'debug',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',  # 'danger' corresponds to Bootstrap's alert-danger
+}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Profile - YourApp {% endblock %}
+{% load socialaccount %}
+{% block content %}
+    <!-- Form Section -->
+    <div class="container-login">
+        <div class="row align-items-center justify-content-center" style="height: 70vh;">
+            <div class="col-lg-3"></div>
+
+            <div class="col-lg-6"> 
+                <div class="bg-white p-4 rounded-3 shadow text-center">
+                    <form method="POST" action="{% url 'verify_mfa' %}">
+                        {% csrf_token %}
+                       
+                        <input type="text" id="otp_code" name="otp_code" 
+                        class="form-control" maxlength="6"
+                         placeholder="Enter your OTP code" required>
+                        <input type="hidden" name="user_id" value="{{ user_id }}">
+                        <button  class="btn-submit" type="submit">Verify</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
+{% endblock %}

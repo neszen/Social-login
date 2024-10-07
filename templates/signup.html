@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
-{% block title %}Profile - YourApp {% endblock %}
-{% load socialaccount %}
+
+{% block title %}Sign Up{% endblock %}
+
 {% block content %}
+{% load socialaccount %}
+
     <!-- Form Section -->
     <div class="container-login">
-        <div class="row align-items-center justify-content-center" style="height: 87vh;">
+        <div class="row align-items-center justify-content-center" style="height: 100vh">
             <div class="col-lg-3"></div>
 
-            <div class="col-lg-6"> 
+            <div class="col-lg-6"> <!-- Increased width for form -->
                 <div class="bg-white p-4 rounded-3 shadow text-center">
                     <h2 class="text-dark">Welcome!</h2>
 
@@ -23,18 +26,20 @@
                         </button>
                     </a>
 
-                    <div class="text-dark text-muted">or use your email</div>
-                    <form class="form" action="{% url 'login' %}" method="post">
+
+
+                    <div class="divider"></div>
+                    <form method="post" action="{% url 'signup' %}" class="form">
                         {% csrf_token %}
+                        
                         <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
-                        <input type="password" class="form-control" name="password" id="Password1" placeholder="Password" required>
 
-                        <p class="text-dark mt-2">
-                            New User? <a href='{% url "signup" %}'>Signup</a>
-                        </p>
+                        <input type="password" class="form-control" name="password1" id="password1" placeholder="Password" required>
+                        
+                        <input type="password" class="form-control" name="password2" id="password2" placeholder="Confirm Password" required>
 
-                    
-                        <button type="submit" class="btn btn-submit">Submit</button>
+
+                        <button type="submit" class="btn btn-submit">Sign Up</button>
                     </form>
                     <div class="divider"></div>
                     <p class="text-dark text-muted">
